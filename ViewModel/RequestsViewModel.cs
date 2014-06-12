@@ -22,8 +22,7 @@ namespace PrototypeEDUCOM.ViewModel
         }
 
         public void actViewDetail(request request) {
-            View.RequestsView requestsView = new View.RequestsView();
-            requestsView.Show();
+            Console.WriteLine("test");
         }
     }
 }
