@@ -4,18 +4,23 @@
         Title="RequestsView" Height="300" Width="300">
     <Grid>
         <Label Content="Liste des demandes" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
-        <ListBox Width="400" Margin="58,50,59,151" x:Name="list" ItemsSource="{Binding requests}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <StackPanel.InputBindings>
-                            <MouseBinding Command="{Binding ElementName=list, Path=DataContext.viewDetail}" CommandParameter="{Binding}" MouseAction="LeftClick"/>
-                        </StackPanel.InputBindings>
-                        <TextBlock Text="{Binding description}" />
-                        <TextBlock Name="state" Text="{Binding state}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <ListView Height="280" ItemsSource="{Binding requests}" x:Name="list">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding id}" />
+                        <GridViewColumn Header="Description" DisplayMemberBinding="{Binding description}" />
+                        <GridViewColumn Header="State" DisplayMemberBinding="{Binding state}" />
+                        <GridViewColumn>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Détails" Command="{Binding ElementName=list, Path=DataContext.cmdViewDetail}" CommandParameter="{Binding}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

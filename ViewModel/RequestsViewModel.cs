@@ -25,6 +25,5 @@ namespace PrototypeEDUCOM.ViewModel
         {
             View.ShowRequestView showRequestsView = new View.ShowRequestView(request);
             showRequestsView.Show();
-        }
     }
 }
