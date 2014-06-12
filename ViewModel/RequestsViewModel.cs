@@ -16,7 +16,8 @@ namespace PrototypeEDUCOM.ViewModel
         public ICollection<Model.request> requests { get; set; }
         public ICommand cmdViewDetail { get; set; }
 
-        public RequestsViewModel() {
+        public RequestsViewModel()
+        {
             this.requests = db.requests.ToArray();
             this.cmdViewDetail = new RelayCommand<request>(actViewDetail);
         }
@@ -25,5 +26,6 @@ namespace PrototypeEDUCOM.ViewModel
         {
             View.ShowRequestView showRequestsView = new View.ShowRequestView(request);
             showRequestsView.Show();
+        }
     }
 }
