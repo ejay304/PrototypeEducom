@@ -8,12 +8,14 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
+                        <StackPanel.InputBindings>
+                            <MouseBinding Command="{Binding ElementName=list, Path=DataContext.viewDetail}" CommandParameter="{Binding}" MouseAction="LeftClick"/>
+                        </StackPanel.InputBindings>
                         <TextBlock Text="{Binding description}" />
                         <TextBlock Name="state" Text="{Binding state}" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-
     </Grid>
 </Window>
