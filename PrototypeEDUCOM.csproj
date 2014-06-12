@@ -73,11 +73,15 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\RequestsViewModel.cs" />
+    <Compile Include="ViewModel\ShowRequestViewModel.cs" />
     <Compile Include="View\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\RequestsView.xaml.cs">
       <DependentUpon>RequestsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ShowRequestView.xaml.cs">
+      <DependentUpon>ShowRequestView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -123,6 +127,10 @@
     <Page Include="View\RequestsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ShowRequestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PrototypeEDUCOM.Model;
+using PrototypeEDUCOM.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,10 @@ namespace PrototypeEDUCOM.View
     /// </summary>
     public partial class ShowRequestView : Window
     {
-        public ShowRequestView()
+        public ShowRequestView(request request)
         {
             InitializeComponent();
+            this.DataContext = new ShowRequestViewModel(request);
         }
     }
 }

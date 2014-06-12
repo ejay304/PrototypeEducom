@@ -21,9 +21,10 @@ namespace PrototypeEDUCOM.ViewModel
             this.cmdViewDetail = new RelayCommand<request>(actViewDetail);
         }
 
-        public void actViewDetail(request request) {
-            View.RequestsView requestsView = new View.RequestsView();
-            requestsView.Show();
+        public void actViewDetail(request request)
+        {
+            View.ShowRequestView showRequestsView = new View.ShowRequestView(request);
+            showRequestsView.Show();
         }
     }
 }
