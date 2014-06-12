@@ -8,17 +8,20 @@ using System.Windows.Input;
 
 namespace PrototypeEDUCOM.ViewModel
 {
-    class RequestsViewModel
+    class RequestsViewModel : BaseViewModel
     {
 
         private Model.EducomDb db = new Model.EducomDb();
 
-        public ICollection<Model.request> requests { get; set; }
+        public ICollection<Model.request> requests {
+            get { return db.requests.ToArray(); }
+            set {  }
+        }
         public ICommand cmdViewDetail { get; set; }
         public ICommand cmdFormAddRequest { get; set; }
 
 
-        public RequestsViewModel()
+        public RequestsViewModel() : base()
         {
             this.requests = db.requests.ToArray();
             this.cmdViewDetail = new RelayCommand<request>(actViewDetail);

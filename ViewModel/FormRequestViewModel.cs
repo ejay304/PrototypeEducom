@@ -30,8 +30,6 @@ namespace PrototypeEDUCOM.ViewModel
             db.requests.Add(r);
             db.SaveChanges();
 
-            NotifyPropertyChanged("requests");
-
             
         }
     }
