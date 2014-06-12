@@ -11,10 +11,10 @@ namespace PrototypeEDUCOM.ViewModel
     {   
         private Model.EducomDb db = new Model.EducomDb();
 
-        public string desciption {get; set;}
+        public string description { get; set; }
         public string state { get; set; }
         public ShowRequestViewModel(request request) {
-            this.desciption = request.description;
+            this.description = request.description;
             this.state = request.state;
         }
     }
