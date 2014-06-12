@@ -15,11 +15,20 @@ namespace PrototypeEDUCOM.ViewModel
 
         public ICollection<Model.request> requests { get; set; }
         public ICommand cmdViewDetail { get; set; }
+        public ICommand cmdFormAddRequest { get; set; }
+
 
         public RequestsViewModel()
         {
             this.requests = db.requests.ToArray();
             this.cmdViewDetail = new RelayCommand<request>(actViewDetail);
+            this.cmdFormAddRequest = new RelayCommand<request>(actFormAddRequest);
+        }
+
+        private void actFormAddRequest(request obj)
+        {
+            View.FormRequestView showRequestsView = new View.FormRequestView();
+            showRequestsView.Show();
         }
 
         public void actViewDetail(request request)
