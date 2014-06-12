@@ -1,0 +1,19 @@
+﻿<Window x:Class="PrototypeEDUCOM.View.RequestsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="RequestsView" Height="300" Width="300">
+    <Grid>
+        <Label Content="Liste des demandes" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+        <ListBox Width="400" Margin="58,50,59,151" x:Name="list" ItemsSource="{Binding requests}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding description}" />
+                        <TextBlock Name="state" Text="{Binding state}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </Grid>
+</Window>
