@@ -23,7 +23,7 @@ namespace PrototypeEDUCOM.View
         public FormRequestView()
         {
             InitializeComponent();
-            this.DataContext = new FormRequestViewModel();
+            this.DataContext = new RequestsViewModel();
         }
     }
 }

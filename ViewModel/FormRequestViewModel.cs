@@ -10,8 +10,6 @@ namespace PrototypeEDUCOM.ViewModel
 {
     class FormRequestViewModel : BaseViewModel
     {
-        private Model.EducomDb db = new Model.EducomDb();
-
         public ICommand cmdAddRequest { get; set; }
         public string description { get; set; }
         public string state { get; set; }
@@ -29,8 +27,6 @@ namespace PrototypeEDUCOM.ViewModel
             r.user = db.users.First();
             db.requests.Add(r);
             db.SaveChanges();
-
-            
         }
     }
 }

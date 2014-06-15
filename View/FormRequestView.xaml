@@ -5,7 +5,7 @@
     <Grid>
         <Label Name="lblDescription" Content="Description" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
         <Label Name="lblState" Content="State" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0"/>
-        <Button Command="{Binding cmdAddRequest}" Content="Ajouter" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="75" Margin="0,0,0,10"/>
+        <Button Command="{Binding cmdAdd}" Content="Ajouter" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="75" Margin="0,0,0,10"/>
         <ComboBox Name="cbxState" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="162,44,0,0"/>
         <TextBox Name="txtDescription" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding description, Mode=OneWayToSource}" VerticalAlignment="Top" Width="120" Margin="162,10,0,0"/>
     </Grid>

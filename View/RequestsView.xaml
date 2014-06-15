@@ -11,10 +11,19 @@
                         <GridViewColumn Header="ID" DisplayMemberBinding="{Binding id}" />
                         <GridViewColumn Header="Description" DisplayMemberBinding="{Binding description}" />
                         <GridViewColumn Header="State" DisplayMemberBinding="{Binding state}" />
+                        <!-- Bouton accès détail d'une demande -->
                         <GridViewColumn>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button Content="Détails" Command="{Binding ElementName=list, Path=DataContext.cmdViewDetail}" CommandParameter="{Binding}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <!-- Bouton suppression d'une demande -->
+                        <GridViewColumn>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Supprimer" Command="{Binding ElementName=list, Path=DataContext.cmdDelete}" CommandParameter="{Binding}" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
