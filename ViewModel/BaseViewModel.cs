@@ -7,7 +7,7 @@ using System.Text;
 
 namespace PrototypeEDUCOM.ViewModel
 {
-    class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel : INotifyPropertyChanged
     {
         protected EducomDb db = new EducomDb();
 

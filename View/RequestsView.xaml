@@ -19,6 +19,14 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
+                        <!-- Bouton édition d'une demande -->
+                        <GridViewColumn>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Editer" Command="{Binding ElementName=list, Path=DataContext.cmdFormEditRequest}" CommandParameter="{Binding}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                         <!-- Bouton suppression d'une demande -->
                         <GridViewColumn>
                             <GridViewColumn.CellTemplate>

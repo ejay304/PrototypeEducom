@@ -1,4 +1,5 @@
 ﻿using PrototypeEDUCOM.Model;
+using PrototypeEDUCOM.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,6 +18,8 @@ namespace PrototypeEDUCOM.ViewModel
         // Peut-etre plus propre de mettre les NotifyPropertyChanged directement dans les set des propriété, a voir
         public ObservableCollection<Model.request> requests { get; set; }
 
+        private request currentRequest { get; set; }
+
         public string description { get; set; }
 
         public string state { get; set; }
@@ -27,22 +30,44 @@ namespace PrototypeEDUCOM.ViewModel
 
         public ICommand cmdFormAddRequest { get; set; }
 
-        public ICommand cmdAdd { get; set; }
+        public ICommand cmdFormEditRequest { get; set; }
 
+        public ICommand cmdEdit { get; set; }
+
+        public Action CloseActionFormEdit { get; set; }
 
         public RequestsViewModel() : base()
         {
             this.requests = new ObservableCollection<request>(db.requests.ToList());
             this.cmdViewDetail = new RelayCommand<request>(actViewDetail);
             this.cmdDelete = new RelayCommand<request>(actDelete);
-            this.cmdFormAddRequest = new RelayCommand<request>(actFormAddRequest);
-            this.cmdAdd = new RelayCommand<object>(actAdd);
+            this.cmdFormAddRequest = new RelayCommand<object>(actFormAddRequest);
+            this.cmdFormEditRequest = new RelayCommand<request>(actFormEditRequest);
+           
+            this.cmdEdit = new RelayCommand<request>(actEdit);
         }
 
-        private void actFormAddRequest(request obj)
+        private void actFormAddRequest(object obj)
         {
-            View.FormRequestView showRequestsView = new View.FormRequestView();
-            showRequestsView.Show();
+            AddRequestViewModel addRequestViewModel = new AddRequestViewModel(this);
+            FormAddRequestView addRequestView = new FormAddRequestView();
+
+            addRequestView.DataContext = addRequestViewModel;
+            addRequestViewModel.CloseActionFormAdd = new Action(() => addRequestView.Close());
+
+            addRequestView.Show(); 
+        }
+
+        private void actFormEditRequest(request request)
+        {
+            View.FormEditRequestView formEditRequestView = new View.FormEditRequestView();
+            formEditRequestView.DataContext = this;
+            this.CloseActionFormEdit = new Action(() => formEditRequestView.Close());
+
+            this.currentRequest = request;
+            this.description = request.description;
+
+            formEditRequestView.Show();
         }
 
         public void actViewDetail(request request)
@@ -59,26 +84,13 @@ namespace PrototypeEDUCOM.ViewModel
             NotifyPropertyChanged("requests");
         }
 
-        public void actAdd(object obj)
+        public void actEdit(object obj)
         {
+            this.currentRequest.description = this.description;
 
-            Console.WriteLine(requests.Count);
-
-            request r = new request();
-            r.description = description;
-            r.state = "done";
-            r.user = db.users.First();
-
-            // Voir les possibilité avec EF de modif la list et automatiquement gere la BD
-
-            // Ajoute dans la liste
-            requests.Add(r);
-            NotifyPropertyChanged("requests");
-            Console.WriteLine(requests.Count);
-           
-            // Enregistre dans la base
-            db.requests.Add(r);
             db.SaveChanges();
+
+            this.CloseActionFormEdit();
         }
     }
 }

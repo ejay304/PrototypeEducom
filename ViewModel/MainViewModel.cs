@@ -8,10 +8,8 @@ using System.Windows.Input;
 
 namespace PrototypeEDUCOM.ViewModel
 {
-    class MainViewModel : INotifyPropertyChanged
+    class MainViewModel : BaseViewModel
     {
-
-        private Model.EducomDb db = new Model.EducomDb();
 
         public String login { get; set; }
 
@@ -21,12 +19,14 @@ namespace PrototypeEDUCOM.ViewModel
 
         public ICommand btnLogin { get; set; }
 
+        public Action CloseAction { get; set; }
+
         public MainViewModel()
         {
-            btnLogin = new RelayCommand<object>(linkToListRequest);
+            btnLogin = new RelayCommand<object>(actLogin);
         }
 
-        private void linkToListRequest(object arg)
+        private void actLogin(object arg)
         {
             // login admin@admin.com pass admin
             // login test@testcom pass test
@@ -38,6 +38,8 @@ namespace PrototypeEDUCOM.ViewModel
                 {
                     View.RequestsView requestsView = new View.RequestsView();
                     requestsView.Show();
+
+                    CloseAction();
                 }
                 else
                 {
@@ -50,14 +52,6 @@ namespace PrototypeEDUCOM.ViewModel
                 message = "Login ou mot de passe vide";
                 NotifyPropertyChanged("message");
             }    
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void NotifyPropertyChanged(string nomPropriete)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(nomPropriete));
         }
     }
 }

@@ -7,8 +7,10 @@ namespace PrototypeEDUCOM.Model
     using System.Data.Entity.Spatial;
 
     [Table("prototype.requests")]
-    public partial class request
+    public class request : ViewModel.BaseViewModel
     {
+        private string _description;
+
         public request()
         {
             students = new HashSet<student>();
@@ -19,7 +21,7 @@ namespace PrototypeEDUCOM.Model
         [Column(TypeName = "text")]
         [Required]
         [StringLength(65535)]
-        public string description { get; set; }
+        public string description { get { return _description; } set { _description = value; NotifyPropertyChanged("description"); } }
 
         [Column(TypeName = "enum")]
         [Required]

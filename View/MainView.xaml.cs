@@ -22,7 +22,10 @@ namespace PrototypeEDUCOM.View
         public MainView()
         {
             InitializeComponent();
-            this.DataContext = new ViewModel.MainViewModel();
+            ViewModel.MainViewModel vm = new ViewModel.MainViewModel();
+            this.DataContext = vm;
+
+            vm.CloseAction = new Action(() => this.Close());
         }
     }
 }
